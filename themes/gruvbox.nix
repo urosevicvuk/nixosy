@@ -15,7 +15,7 @@
       inactive-opacity = 0.95;
       blur = true;
       border-size = 2;
-      animation-speed = "fast"; # "fast" | "medium" | "slow"
+      animation-speed = "medium"; # "fast" | "medium" | "slow"
       fetch = "none"; # "nerdfetch" | "neofetch" | "pfetch" | "none"
       textColorOnWallpaper =
         config.lib.stylix.colors.base01; # Color of the text displayed on the wallpaper (Lockscreen, display manager, ...) bar = { position = "top"; # "top" | "bottom"

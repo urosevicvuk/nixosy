@@ -1,6 +1,11 @@
 # So best window tiling manager
-{ pkgs, config, inputs, lib, ... }:
-let
+{
+  pkgs,
+  config,
+  inputs,
+  lib,
+  ...
+}: let
   border-size = config.theme.border-size;
   gaps-in = config.theme.gaps-in;
   gaps-out = config.theme.gaps-out;
@@ -12,7 +17,6 @@ let
   keyboardVariant = config.var.keyboardVariant;
   background = "rgb(" + config.lib.stylix.colors.base00 + ")";
 in {
-
   imports = [
     ./animations.nix
     ./bindings.nix
@@ -94,9 +98,8 @@ in {
         "WLR_BACKEND,vulkan"
         "WLR_RENDERER,vulkan"
         "WLR_NO_HARDWARE_CURSORS,1"
-        "SDL_VIDEODRIVER,wayland"
+        "SDL_VIDEODRIVER,wayland,x11,windows"
         "CLUTTER_BACKEND,wayland"
-        "AQ_DRM_DEVICES,/dev/dri/card2:/dev/dri/card1" # CHANGEME: Related to the GPU
       ];
 
       cursor = {
@@ -123,7 +126,10 @@ in {
           render_power = 3;
         };
         blur = {
-          enabled = if blur then "true" else "false";
+          enabled =
+            if blur
+            then "true"
+            else "false";
           size = 18;
         };
       };
@@ -134,7 +140,7 @@ in {
         mfact = 0.5;
       };
 
-      gestures = { workspace_swipe = true; };
+      gestures = {workspace_swipe = true;};
 
       misc = {
         vfr = true;
@@ -179,7 +185,7 @@ in {
         "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
       ];
 
-      layerrule = [ "noanim, launcher" "noanim, ^ags-.*" ];
+      layerrule = ["noanim, launcher" "noanim, ^ags-.*"];
 
       workspace = [
         "1, monitor:DP-2"
@@ -218,7 +224,6 @@ in {
           clickfinger_behavior = true;
         };
       };
-
     };
   };
 }
