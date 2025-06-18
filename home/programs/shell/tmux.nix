@@ -1,6 +1,5 @@
 # Tmux is a terminal multiplexer that allows you to run multiple terminal sessions in a single window.
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   Config = pkgs.writeShellScriptBin "Config" ''
     SESSION="Nixy Config"
 
@@ -39,20 +38,32 @@ in {
       bind-key k select-pane -U
       bind-key l select-pane -R
 
+      set-option -g status-position top
+
+      set -g base-index 1
+      setw -g pane-base-index 1
+
+      set -g @continuum-boot 'on'
+
       set -gq allow-passthrough on
       bind-key x kill-pane # skip "kill-pane 1? (y/n)" prompt
 
       bind-key -n C-Tab next-window
       bind-key -n C-S-Tab previous-window
       bind-key -n M-Tab new-window
+
+      set -g @tmux-gruvbox-statusbar-alpha 'true'
+      set -g @tmux-gruvbox-right-status-x '%d.%m.%Y' # e.g.: 30.01.2024
     '';
 
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
-      # tmuxPlugins.resurrect
+      tmuxPlugins.resurrect
+      tmuxPlugins.continuum
       tmuxPlugins.sensible
-      tmuxPlugins.tokyo-night-tmux
+      tmuxPlugins.gruvbox
+      tmuxPlugins.tmux-which-key
     ];
   };
-  home.packages = [ Config ];
+  home.packages = [Config];
 }

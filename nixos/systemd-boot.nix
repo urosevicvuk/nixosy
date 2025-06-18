@@ -1,12 +1,20 @@
 { pkgs, ... }: {
   boot = {
+    initrd.kernelModules = [ "amdgpu" ];
+    supportedFilesystems = [ "ntfs" ];
     bootspec.enable = true;
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {
+        enable = false;
+        #consoleMode = "auto";
+        #configurationLimit = 8;
+      };
+      grub = {
         enable = true;
-        consoleMode = "auto";
-        configurationLimit = 8;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        useOSProber = true;
       };
     };
     tmp.cleanOnBoot = true;
@@ -24,5 +32,6 @@
     ];
     consoleLogLevel = 0;
     initrd.verbose = false;
+    extraModprobeConfig = "options bluetooth disable_ertm=1 ";
   };
 }

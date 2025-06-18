@@ -39,26 +39,25 @@
 
   outputs = inputs @ {nixpkgs, ...}: {
     nixosConfigurations = {
-      anorLondo =
-        # CHANGEME: This should match the 'hostname' in your variables.nix file
-        nixpkgs.lib.nixosSystem {
-          modules = [
-            {
-              nixpkgs.overlays = [ 
-                (final: prev: {
-                  deno = prev.deno.overrideAttrs (old: {
-                    doCheck = false;
-                  });
-                })
-                inputs.hyprpanel.overlay];
+      anorLondo = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                deno = prev.deno.overrideAttrs (old: {
+                  doCheck = false;
+                });
+              })
+              inputs.hyprpanel.overlay
+            ];
 
-              _module.args = {inherit inputs;};
-            }
-            inputs.home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix
-            ./hosts/anorLondo/configuration.nix # CHANGEME: change the path to match your host folder
-          ];
-        };
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ./hosts/anorLondo/configuration.nix # CHANGEME: change the path to match your host folder
+        ];
+      };
       # Jack is my server
       jack = nixpkgs.lib.nixosSystem {
         modules = [
