@@ -36,6 +36,7 @@ in {
     shellAliases = {
       nhs = "nh os switch ~/nixosy/";
       nvimf = "nvim $(fzf)";
+      hpr = "hyprpanel -q | hyprpanel & disown";
       vim = "nvim";
       vi = "nvim";
       v = "nvim";

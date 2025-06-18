@@ -1,10 +1,14 @@
-{ pkgs, config, ... }: {
-
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ./variables.nix
 
     # Programs
     ../../home/programs/kitty
+    ../../home/programs/btop
     ../../home/programs/nvf
     ../../home/programs/shell
     ../../home/programs/fetch
@@ -60,7 +64,7 @@
       prismlauncher # Minecraft launcher
       shadps4 # PS4 emulator
       lutris # Pirated game launcher
-      (wineWowPackages.stable.override { waylandSupport = true; })
+      (wineWowPackages.stable.override {waylandSupport = true;})
       winetricks
       protonup # Proton my beloved
 
@@ -100,11 +104,10 @@
       cbonsai
       pipes
       cmatrix
-
     ];
 
     # Import my profile picture, used by the hyprpanel dashboard
-    file.".face.icon" = { source = ./profile_picture.png; };
+    file.".face.icon" = {source = ./profile_picture.png;};
 
     # Don't touch this
     stateVersion = "24.05";
