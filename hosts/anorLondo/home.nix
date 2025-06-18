@@ -14,14 +14,15 @@
     ../../home/programs/git
     ../../home/programs/git/signing.nix
     ../../home/programs/spicetify
-    ../../home/programs/nextcloud
     ../../home/programs/thunar
     ../../home/programs/lazygit
     ../../home/programs/zen
     ../../home/programs/duckduckgo-colorscheme
     ../../home/programs/discord
-    ../../home/programs/tailscale
+    #../../home/programs/tailscale #Server stuff
+    #../../home/programs/nextcloud #NAS stuff
     ../../home/programs/anyrun
+    ../../home/programs/btop
 
     # Scripts
     ../../home/scripts # All scripts
@@ -89,7 +90,6 @@
       optipng
       pfetch
       pandoc
-      btop-rocm
       fastfetch
       nitch
       ripgrep
