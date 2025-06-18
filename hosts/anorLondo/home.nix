@@ -8,7 +8,6 @@
 
     # Programs
     ../../home/programs/kitty
-    ../../home/programs/btop
     ../../home/programs/nvf
     ../../home/programs/shell
     ../../home/programs/fetch
