@@ -9,6 +9,7 @@ let
   rounding = config.theme.rounding;
   blur = config.theme.blur;
   keyboardLayout = config.var.keyboardLayout;
+  keyboardVariant = config.var.keyboardVariant;
   background = "rgb(" + config.lib.stylix.colors.base00 + ")";
 in {
 
@@ -67,10 +68,10 @@ in {
       ];
 
       monitor = [
-        "eDP-2,highres,0x0,1" # My internal laptop screen
-        "desc:AOC U34G2G1 0x00000E06,3440x1440@99.98,auto,1" # My external monitor
-        "desc:United Microelectr Corporation UMC SHARP,3840x2160,auto,2" # TV
-        ",prefered,auto,1" # default
+        "DP-2, 1920x1080@144, 0x0, 1"
+        "DP-3, prefered, auto, 1, transform, 1"
+        "HDMI-A-1, prefered, auto, 1, mirror, DP-2"
+        ",prefered,auto,1"
       ];
 
       env = [
@@ -100,7 +101,7 @@ in {
 
       cursor = {
         no_hardware_cursors = true;
-        default_monitor = "eDP-2";
+        default_monitor = "DP-2";
       };
 
       general = {
@@ -180,12 +181,34 @@ in {
 
       layerrule = [ "noanim, launcher" "noanim, ^ags-.*" ];
 
+      workspace = [
+        "1, monitor:DP-2"
+        "2, monitor:DP-2"
+        "3, monitor:DP-2"
+        "4, monitor:DP-2"
+        "5, monitor:DP-2"
+        "6, monitor:DP-2"
+        "7, monitor:DP-2"
+        "8, monitor:DP-2"
+        "9, monitor:DP-2"
+        "alternative, monitor:DP-3, default:true, layoutopt:orientation:top"
+      ];
+
+      windowrule = [
+        "workspace 4, title:Steam"
+        "workspace 5, title:Spotify"
+        "workspace 8, title:Discord"
+        "workspace 9, title:Obsidian"
+      ];
+
       input = {
         kb_layout = keyboardLayout;
+        kb_variant = keyboardVariant;
 
-        kb_options = "caps:escape";
+        kb_options = "caps:escape,altwin:swap_alt_win";
         follow_mouse = 1;
-        sensitivity = 0.5;
+        sensitivity = -0.5;
+        accel_profile = "flat";
         repeat_delay = 300;
         repeat_rate = 50;
         numlock_by_default = true;

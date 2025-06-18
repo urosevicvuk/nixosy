@@ -7,10 +7,19 @@ let
   defaultLocale = config.var.defaultLocale;
   extraLocale = config.var.extraLocale;
   autoUpgrade = config.var.autoUpgrade;
+  keyboardVariant = config.var.keyboardVariant;
 in {
-  networking.hostName = hostname;
+  networking = {
+    hostName = hostname;
+    networkmanager.enable = true;
 
-  networking.networkmanager.enable = true;
+    firewall = {
+      allowedTCPPorts = [ 57621 8080 3306];
+      allowedUDPPorts = [ 5353 ];
+    };
+
+  };
+
   systemd.services.NetworkManager-wait-online.enable = false;
 
   system.autoUpgrade = {
@@ -38,10 +47,14 @@ in {
   services = {
     xserver = {
       enable = true;
-      xkb.layout = keyboardLayout;
-      xkb.variant = "";
+      xkb = {
+          layout = keyboardLayout;
+          variant = keyboardVariant;
+          options = "grp:alt_shift_toggle";
+      };
     };
     gnome.gnome-keyring.enable = true;
+    hardware.openrgb.enable = true;
     psd = {
       enable = true;
       resyncTimer = "10m";
@@ -51,15 +64,15 @@ in {
 
   environment.variables = {
     XDG_DATA_HOME = "$HOME/.local/share";
+    NH_FLAKE = "/home/vyke/.config/nixos";
     PASSWORD_STORE_DIR = "$HOME/.local/share/password-store";
     EDITOR = "nvim";
     TERMINAL = "kitty";
     TERM = "kitty";
     BROWSER = "zen-beta";
+    PULSE_LATENCY_MSEC = 60;
   };
 
-  services.libinput.enable = true;
-  programs.dconf.enable = true;
   services = {
     dbus = {
       enable = true;
@@ -70,6 +83,18 @@ in {
     upower.enable = true;
     power-profiles-daemon.enable = true;
     udisks2.enable = true;
+    libinput.enable = true;
+    mysql = {
+      enable = true;
+      package = pkgs.mariadb;
+    };
+  };
+  programs = {
+    kdeconnect.enable = true;
+    dconf.enable = true;
+    steam.enable = true;
+    gamescope.enable = true;
+    gamemode.enable = true;
   };
 
   # enable zsh autocompletion for system packages (systemd, etc)
