@@ -38,6 +38,11 @@ in {
       bind-key k select-pane -U
       bind-key l select-pane -R
 
+      unbind -n C-h
+      unbind -n C-j
+      unbind -n C-k
+      unbind -n C-l
+
       set-option -g status-position top
 
       set -g base-index 1
