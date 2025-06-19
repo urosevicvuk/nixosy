@@ -55,11 +55,11 @@
           }
           inputs.home-manager.nixosModules.home-manager
           inputs.stylix.nixosModules.stylix
-          ./hosts/anorLondo/configuration.nix # CHANGEME: change the path to match your host folder
+          ./hosts/anorLondo/configuration.nix
         ];
       };
-      # Jack is my server
-      jack = nixpkgs.lib.nixosSystem {
+      # fireLink is the server
+      fireLink = nixpkgs.lib.nixosSystem {
         modules = [
           {_module.args = {inherit inputs;};}
           inputs.home-manager.nixosModules.home-manager
@@ -67,7 +67,7 @@
           inputs.sops-nix.nixosModules.sops
           inputs.nixarr.nixosModules.default
           inputs.search-nixos-api.nixosModules.search-nixos-api
-          ./hosts/server/configuration.nix
+          ./hosts/fireLink/configuration.nix
         ];
       };
     };
