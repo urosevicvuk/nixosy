@@ -37,25 +37,61 @@
         key = "<C-h>";
         mode = "n";
         silent = true;
-        action = "<cmd>KittyNavigateLeft<cr>";
+        #action = "<cmd>KittyNavigateLeft<cr>";
+        action = ''
+          <cmd>lua
+            if vim.env.TMUX and vim.env.TMUX ~= "" then
+              vim.cmd("wincmd h")
+            else
+              vim.cmd("KittyNavigateLeft")
+            end
+          <CR>
+        '';
       }
       {
         key = "<C-j>";
         mode = "n";
         silent = true;
-        action = "<cmd>KittyNavigateDown<cr>";
+        #action = "<cmd>KittyNavigateDown<cr>";
+        action = ''
+          <cmd>lua
+            if vim.env.TMUX and vim.env.TMUX ~= "" then
+              vim.cmd("wincmd j")
+            else
+              vim.cmd("KittyNavigateDown")
+            end
+          <CR>
+        '';
       }
       {
         key = "<C-k>";
         mode = "n";
         silent = true;
-        action = "<cmd>KittyNavigateUp<cr>";
+        #action = "<cmd>KittyNavigateUp<cr>";
+        action = ''
+          <cmd>lua
+            if vim.env.TMUX and vim.env.TMUX ~= "" then
+              vim.cmd("wincmd k")
+            else
+              vim.cmd("KittyNavigateUp")
+            end
+          <CR>
+        '';
       }
       {
         key = "<C-l>";
         mode = "n";
         silent = true;
-        action = "<cmd>KittyNavigateRight<cr>";
+        #action = "<cmd>KittyNavigateRight<cr>";
+        action = ''
+          <cmd>lua
+            if vim.env.TMUX and vim.env.TMUX ~= "" then
+              vim.cmd("wincmd l")
+            else
+              vim.cmd("KittyNavigateRight")
+            end
+          <CR>
+        '';
       }
 
       # Disable Arrow Keys in Normal Mode

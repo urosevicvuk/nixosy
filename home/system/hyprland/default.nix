@@ -1,11 +1,6 @@
 # So best window tiling manager
-{
-  pkgs,
-  config,
-  inputs,
-  lib,
-  ...
-}: let
+{ pkgs, config, inputs, lib, ... }:
+let
   border-size = config.theme.border-size;
   gaps-in = config.theme.gaps-in;
   gaps-out = config.theme.gaps-out;
@@ -112,7 +107,7 @@ in {
         gaps_in = gaps-in;
         gaps_out = gaps-out;
         border_size = border-size;
-        layout = "master";
+        layout = "dwindle";
         "col.inactive_border" = lib.mkForce background;
       };
 
@@ -126,10 +121,7 @@ in {
           render_power = 3;
         };
         blur = {
-          enabled =
-            if blur
-            then "true"
-            else "false";
+          enabled = if blur then "true" else "false";
           size = 18;
         };
       };
@@ -140,7 +132,7 @@ in {
         mfact = 0.5;
       };
 
-      gestures = {workspace_swipe = true;};
+      gestures = { workspace_swipe = true; };
 
       misc = {
         vfr = true;
@@ -185,7 +177,7 @@ in {
         "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
       ];
 
-      layerrule = ["noanim, launcher" "noanim, ^ags-.*"];
+      layerrule = [ "noanim, launcher" "noanim, ^ags-.*" ];
 
       workspace = [
         "1, monitor:DP-2"

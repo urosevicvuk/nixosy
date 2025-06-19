@@ -9,6 +9,7 @@
     # Programs
     ../../home/programs/kitty
     ../../home/programs/nvf
+    #../../home/programs/nixvim #Using nvf currently, here as module for backup
     ../../home/programs/shell
     ../../home/programs/fetch
     ../../home/programs/git
