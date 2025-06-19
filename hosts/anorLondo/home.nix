@@ -8,8 +8,8 @@
 
     # Programs
     ../../home/programs/kitty
-    ../../home/programs/nvf
-    #../../home/programs/nixvim #Using nvf currently, here as module for backup
+    #../../home/programs/nvf #Using nixvim currently, here as module for backup
+    ../../home/programs/nixvim
     ../../home/programs/shell
     ../../home/programs/fetch
     ../../home/programs/git

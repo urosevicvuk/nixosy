@@ -14,12 +14,12 @@
           # General Mappings
           {
             __unkeyed-1 = "<leader>c";
-            mode = [ "n" "v" ];
+            mode = ["n" "v"];
             group = "+code";
           }
           {
             __unkeyed-1 = "<leader>d";
-            mode = [ "n" "v" ];
+            mode = ["n" "v"];
             group = "+debug";
           }
           {
@@ -63,7 +63,7 @@
     keymaps = [
       # General Mappings
       {
-        key = "<leader>e";
+        key = "<leader>E";
         action = "<cmd>Oil --float<cr>";
         options.desc = "Oil";
       }
@@ -73,7 +73,7 @@
         options.desc = "Oil";
       }
       {
-        key = "<leader>E";
+        key = "<leader>e";
         action = "<cmd>Neotree toggle<cr>";
         options.desc = "Neotree";
       }
@@ -160,7 +160,7 @@
         options.desc = "Telescope";
       }
       {
-        key = "<leader>sg";
+        key = "<leader>/";
         action = "<cmd>lua require('telescope.builtin').live_grep()<cr>";
         options.desc = "Livegrep";
       }
@@ -170,7 +170,7 @@
         options.desc = "Find Files";
       }
       {
-        key = "<leader>sb";
+        key = "<leader>,";
         action = "<cmd>lua require('telescope.builtin').buffers()<cr>";
         options.desc = "Buffers";
       }
