@@ -14,6 +14,10 @@
     autocomplete.blink-cmp = {
       enable = true;
       friendly-snippets.enable = true;
+      setupOpts = {
+        keymap.preset = "enter";
+        cmdline.keymap.preset = "none";
+      };
     };
     snippets.luasnip.enable = true;
     ui = {
